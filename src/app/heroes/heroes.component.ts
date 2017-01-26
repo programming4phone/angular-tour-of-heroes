@@ -28,7 +28,11 @@ export class HeroesComponent implements OnInit {
 	}
 	
 	getHeroes(): void {
-		this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+		// Heroes should be listed by power ratings, most powerful first
+		this.heroService.getHeroes().then(h => {
+			h.sort((a,b) => b.rating-a.rating);
+			this.heroes = h;
+		});
 	}
 
 	gotoDetail(): void {

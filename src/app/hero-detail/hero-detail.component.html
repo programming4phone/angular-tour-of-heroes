@@ -1,12 +1,27 @@
 <div *ngIf="hero" class="standardMargin">
 	<div class="ui raised segment">
-		<label class="ui blue ribbon label">{{hero.name}} details!</label>
+		<label class="ui blue ribbon label">{{hero.name}} Details</label>
 		<div class="standardMarginTop">
 			<div class="ui label">ID:<div class="detail">{{hero.id}}</div></div>
 		</div>
 	    <div class="standardMarginTop">
-			<label ><small>Name</small></label>&nbsp;<input class="ui input" [(ngModel)]="hero.name" placeholder="Name"/>
+			<label ><small>Name</small></label><br/><input class="ui input" [(ngModel)]="hero.name" placeholder="Name"/>
 		</div>
+		<div class="standardMarginTop">
+			<label ><small>Description</small></label><br/><input class="ui input" [(ngModel)]="hero.description" placeholder="Description" style="width:60%"/>
+		</div>
+		
+		<div class="standardMarginTop">
+			<label ><small>Power</small></label><br/>
+			<div class="ui huge star rating" >
+				<i class="icon" [class.active]="hero.rating>0" (click)="changeRating('1')" ></i>
+				<i class="icon" [class.active]="hero.rating>1" (click)="changeRating('2')" ></i>
+				<i class="icon" [class.active]="hero.rating>2" (click)="changeRating('3')" ></i>
+				<i class="icon" [class.active]="hero.rating>3" (click)="changeRating('4')" ></i>
+				<i class="icon" [class.active]="hero.rating>4" (click)="changeRating('5')" ></i>
+			</div>
+		</div>
+		
 		<div class="standardMarginTop">
 			<button class="ui button" (click)="save()">Save</button>
 			<button class="ui button" (click)="goBack()">Back</button>

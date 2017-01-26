@@ -29,6 +29,10 @@ export class HeroDetailComponent implements OnInit{
 			.subscribe(hero => this.hero = hero);
 	}
 	
+	changeRating(rating: number): void {
+		this.hero.rating = rating;
+	}
+	
 	goBack(): void {
 		this.location.back();
 	}

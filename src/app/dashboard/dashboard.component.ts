@@ -16,7 +16,11 @@ export class DashboardComponent implements OnInit {
 	constructor(private router: Router, private heroService: HeroService) { }
 
 	ngOnInit(): void {
-		this.heroService.getHeroes().then(heroes => this.heroes = heroes.slice(1, 5));
+		// Only return the top 4 most powerful heroes
+		this.heroService.getHeroes().then(h => {
+			h.sort((a,b) => b.rating-a.rating);
+			this.heroes = h.slice(0, 4);
+		});
 	}
 
 	gotoDetail(id): void {
