@@ -17,10 +17,18 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Only return the top 4 most powerful heroes
-		this.heroService.getHeroes().then(h => {
-			h.sort((a,b) => b.rating-a.rating);
-			this.heroes = h.slice(0, 4);
-		});
+		this.heroService.getHeroes().subscribe(
+			(h: Hero[]) => { // on sucesss
+				// Heroes should be listed by power ratings, most powerful first
+				h.sort((a,b) => b.rating-a.rating);
+				this.heroes = h.slice(0, 4);
+			},
+			(err: any) => { // on error
+				console.log(err);
+			},
+			() => { // on completion
+			}
+		);
 	}
 
 	gotoDetail(id): void {

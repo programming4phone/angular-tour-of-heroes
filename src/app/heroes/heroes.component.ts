@@ -28,35 +28,54 @@ export class HeroesComponent implements OnInit {
 	}
 	
 	getHeroes(): void {
-		// Heroes should be listed by power ratings, most powerful first
-		this.heroService.getHeroes().then(h => {
-			h.sort((a,b) => b.rating-a.rating);
-			this.heroes = h;
-		});
-	}
-
-	gotoDetail(): void {
-		this.router.navigate(['/detail', this.selectedHero.id]);
+		this.heroService.getHeroes().subscribe(
+			(h: Hero[]) => { // on sucesss
+				// Heroes should be listed by power ratings, most powerful first
+				h.sort((a,b) => b.rating-a.rating);
+				this.heroes = h;
+			},
+			(err: any) => { // on error
+				console.log(err);
+			},
+			() => { // on completion
+			}
+		);
 	}
 	
 	add(name: string): void {
 		name = name.trim();
 		if (!name) { return; }
-		this.heroService.create(name)
-			.then(hero => {
-				this.heroes.push(hero);
+		this.heroService.create(name).subscribe(
+			(h: Hero) => { // on sucesss
+				this.heroes.push(h);
 				this.selectedHero = null;
-			});
+			},
+			(err: any) => { // on error
+				console.log(err);
+			},
+			() => { // on completion
+			}
+		);
 	}
 	
 	delete(hero: Hero): void {
 		this.heroService
-			.delete(hero.id)
-			.then(() => {
+			.delete(hero.id).subscribe(
+			(h: any) => { // on sucesss
 				this.heroes = this.heroes.filter(h => h !== hero);
 				if (this.selectedHero === hero) { 
 					this.selectedHero = null; 
 				}
-			});
+			},
+			(err: any) => { // on error
+				console.log(err);
+			},
+			() => { // on completion
+			}
+		);
+	}
+	
+	gotoDetail(): void {
+		this.router.navigate(['/detail', this.selectedHero.id]);
 	}
 }
