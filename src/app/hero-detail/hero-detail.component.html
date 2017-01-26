@@ -1,11 +1,15 @@
-<div *ngIf="hero">
-    <h2>{{hero.name}} details!</h2>
-    <div><label>id: </label>{{hero.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </div>
-	<button (click)="save()">Save</button>
-	<button (click)="goBack()">Back</button>
+<div *ngIf="hero" class="standardMargin">
+	<div class="ui raised segment">
+		<label class="ui blue ribbon label">{{hero.name}} details!</label>
+		<div class="standardMarginTop">
+			<div class="ui label">ID:<div class="detail">{{hero.id}}</div></div>
+		</div>
+	    <div class="standardMarginTop">
+			<label ><small>Name</small></label>&nbsp;<input class="ui input" [(ngModel)]="hero.name" placeholder="Name"/>
+		</div>
+		<div class="standardMarginTop">
+			<button class="ui button" (click)="save()">Save</button>
+			<button class="ui button" (click)="goBack()">Back</button>
+		</div>
+	</div>
 </div>
-

@@ -1,9 +1,26 @@
-<h3>Top Heroes</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let hero of heroes"  [routerLink]="['/detail', hero.id]"  class="col-1-4">
-    <div class="module hero">
-      <h4>{{hero.name}}</h4>
-    </div>
-  </a>
+<div class="standardMargin">
+	<h3>Top Heroes</h3>
+</div>
+<div class="standardMargin">
+	<div class="ui four cards">
+		<div class="ui card" *ngFor="let hero of heroes">
+			<div class="content">
+			  <div class="header">
+				{{hero.name}}
+			  </div>
+			  <div class="meta">
+				This is an Angular 2 super hero with super powers, far greater than mere mortal developers.
+			  </div>
+			</div>
+			<div class="extra content">
+			  <a (click)="gotoDetail(hero.id)">
+				<i class="info circle icon"></i>
+				Details
+			  </a>
+			</div>
+
+			
+		</div>
+	</div>
 </div>
 <hero-search></hero-search>

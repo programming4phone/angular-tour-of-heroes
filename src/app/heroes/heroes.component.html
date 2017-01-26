@@ -1,20 +1,47 @@
-<h2>My Heroes</h2>
-<div>
-	<label>Hero name:</label> <input #heroName />
-	<button (click)="add(heroName.value); heroName.value=''">Add</button>
+<div class="standardMargin">
+	<h2>My Heroes</h2>
 </div>
-<ul class="heroes">
-	<li *ngFor="let hero of heroes"  
-			[class.selected]="hero === selectedHero"
-			(click)="onSelect(hero)">
-		<span class="badge">{{hero.id}}</span> {{hero.name}}
-		<button class="delete"
-			(click)="delete(hero); $event.stopPropagation()">x</button>
-	</li>
-</ul>
-<div *ngIf="selectedHero">
-	<h2>
+<div class="standardMargin">
+    <div class="ui right labeled left icon input">
+      <i class="add circle icon"></i>
+      <input placeholder="Enter hero name" type="text" #heroName>
+      <a class="ui label" (click)="add(heroName.value); heroName.value=''">
+        Add Hero
+      </a>
+    </div>
+</div>
+<div class="standardMargin">
+	<div>
+		<table class="ui very basic left aligned table">
+			<tbody>
+				<tr *ngFor="let hero of heroes"  
+					[class.selected]="hero === selectedHero"
+					(click)="onSelect(hero)">
+				<td class="left aligned">
+					<div >
+						<button class="ui icon button"
+							data-tooltip="View"
+							(click)="gotoDetail(hero)">
+							<i class="info circle icon"></i>
+						</button>
+						
+						<button class="ui icon button"
+							data-tooltip="Delete"
+							(click)="delete(hero); $event.stopPropagation()">
+							<i class="remove circle icon"></i>
+						</button>
+						&nbsp;<span class="ui blue label">{{hero.id}}<div class="detail">{{hero.name}}</div></span>
+					</div>
+				</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div *ngIf="selectedHero" class="extra content">
+	   <button class="ui labeled icon button" (click)="gotoDetail()" data-tooltip="View Details">
+		<i class="user icon"></i>
 		{{selectedHero.name | uppercase}} is my hero
-	</h2>
-	<button (click)="gotoDetail()">View Details</button>
+		</button>
+    </div>
 </div>

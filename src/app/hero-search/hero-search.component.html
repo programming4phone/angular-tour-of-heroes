@@ -1,10 +1,25 @@
-<div id="search-component">
-	<h4>Hero Search</h4>
-	<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+<div id="search-component" class="ui aligned basic segment">
+	
+	<div class="ui left icon input">
+		<i class="search icon"></i>
+		<input type="text" placeholder="Hero Search..." #searchBox id="search-box" (keyup)="search(searchBox.value)">
+    </div>
+
 	<div>
-		<div *ngFor="let hero of heroes | async"
-			(click)="gotoDetail(hero)" class="search-result" >
-			{{hero.name}}
-		</div>
+		<table class="ui very basic left aligned table">
+			<tbody>
+				<tr *ngFor="let hero of heroes | async">
+					<td class="left aligned">
+						<div class="extra content">
+							<a (click)="gotoDetail(hero)">
+								<i class="info circle icon"></i>
+								{{hero.name}}
+							</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+
 </div>

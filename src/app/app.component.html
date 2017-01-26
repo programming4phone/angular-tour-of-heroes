@@ -1,6 +1,17 @@
+<!--
 <h1>{{title}}</h1>
 <nav>
 	<a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
     <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
 </nav>
 <router-outlet></router-outlet>
+-->
+
+<h1>{{ title }}</h1>
+<div>
+	<div class="ui menu">
+		<a class="item" routerLink="/dashboard">Dashboard</a>
+		<a class="item" routerLink="/heroes">Heroes</a>
+	</div>
+	<router-outlet></router-outlet>
+</div>
