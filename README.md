@@ -2,18 +2,23 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
-## UI improvements
+## Tutorial improvements
 
++ Entire tutorial code base built from scratch using `angular-cli`.
 + Code base modified to use Semantic UI.
 + Added description and power ratings to Hero objects.
-+ Replaced all occurrences of Promise with Observable in HeroService
++ Replaced all occurrences of Promise with Observable in HeroService.
++ Replaced  `angular2-in-memory-web-api` with `angular-in-memory-web-api`.
 
 ## Development server
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+
+HeroService and HeroSearchService both use `angular-in-memory-web-api` which can be installed by executing `npm i angular-in-memory-web-api` from the command line on the project folder.
 
 ## Build
 
