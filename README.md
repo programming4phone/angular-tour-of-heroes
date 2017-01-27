@@ -18,7 +18,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
-HeroService and HeroSearchService both use `angular-in-memory-web-api` which can be installed by executing `npm i angular-in-memory-web-api` from the command line on the project folder.
+HeroService and HeroSearchService both use `angular-in-memory-web-api`. To install execute the following from the command line on the project folder:
+`npm i angular-in-memory-web-api`
 
 ## Build
 

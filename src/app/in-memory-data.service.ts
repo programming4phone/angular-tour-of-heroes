@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 17, name: 'Dynama', rating: 4, description: 'Super powerful and electrically charged, he hurls lightning bolts at his enemies.'},
       {id: 18, name: 'Dr IQ', rating: 2, description: 'Super smart with an oversized bald head. Straight out of the 1950s DC universe.'},
       {id: 19, name: 'Magma', rating: 4, description: 'A lava based shape shifter. Once cooled he turns to sand.'},
-      {id: 20, name: 'Tornado', rating: 5, description: 'Roaring through life like a hurricane, this villian can sure stir up a mess.'}
+      {id: 20, name: 'Tornado', rating: 5, description: 'Roaring through life like a hurricane, this villain can sure stir up a mess.'}
     ];
     return {heroes};
   }
