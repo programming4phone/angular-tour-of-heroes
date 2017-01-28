@@ -11,7 +11,7 @@ import { AppComponent } 		from '../app.component';
 import { HeroDetailComponent } 	from '../hero-detail/hero-detail.component';
 import { HeroesComponent } 		from '../heroes/heroes.component';
 import { DashboardComponent } 	from '../dashboard/dashboard.component';
-import { HeroService } 			from '../services/hero.service';
+import { HeroSearchService } 	from '../services/hero-search.service';
 
 import { AppRoutingModule }     from '../app-routing.module';
 import { HeroSearchComponent } 	from '../hero-search/hero-search.component';
@@ -50,26 +50,26 @@ describe('App: AngularTourOfHeroes', () => {
 				AppRoutingModule
 			],
 			providers: [
-				{ provide: HeroService, useClass: HeroService },
+				{ provide: HeroSearchService, useClass: HeroSearchService },
 				{ provide: APP_BASE_HREF, useValue: '/' }
 			],
 		});
 	});
  
- 	it('HeroService should be created', 
+ 	it('HeroSearchService should be created', 
 		fakeAsync(
-			inject([HeroService], (comp) => {
+			inject([HeroSearchService], (comp) => {
 				tick();
 				expect(comp).toBeTruthy();
 			})
 		)
 	);
 	
- 	it('HeroService::getHeroes() should return an Observable', 
+ 	it('HeroSearchService::getHeroes() should return an Observable', 
 		fakeAsync(
-			inject([HeroService], (svc) => {
+			inject([HeroSearchService], (svc) => {
 				tick();
-				svc.getHeroes().subscribe(
+				svc.search('b').subscribe(
 					(heroes: Hero[]) => { // on sucesss
 						expect(heroes).toBeDefined();
 						expect(heroes.length>0).toBeTruthy();
@@ -83,7 +83,45 @@ describe('App: AngularTourOfHeroes', () => {
 			})
 		)
 	);
- 	
+	
+ 	it('HeroSearchService::getHeroes() not found should return an Observable', 
+		fakeAsync(
+			inject([HeroSearchService], (svc) => {
+				tick();
+				svc.search('z').subscribe(
+					(heroes: Hero[]) => { // on sucesss
+						expect(heroes).toBeDefined();
+						expect(heroes.length>0).toBeFalsy();
+					},
+					(err: any) => { // on error
+						expect(err).toBeFalsey();
+					},
+					() => { // on completion
+					}
+				);
+			})
+		)
+	);
+	
+	it('HeroSearchService::getHeroes() undefined should return an Observable', 
+		fakeAsync(
+			inject([HeroSearchService], (svc) => {
+				tick();
+				svc.search(undefined).subscribe(
+					(heroes: Hero[]) => { // on sucesss
+						expect(heroes).toBeDefined();
+						expect(heroes.length>0).toBeFalsy();
+					},
+					(err: any) => { // on error
+						expect(err).toBeFalsey();
+					},
+					() => { // on completion
+					}
+				);
+			})
+		)
+	);
+ 	/*
  	it('HeroService::getHero() should return an Observable', 
 		fakeAsync(
 			inject([HeroService], (svc) => {
@@ -219,6 +257,6 @@ describe('App: AngularTourOfHeroes', () => {
 			})
 		)
 	);
-	
+	*/
 	
   });
