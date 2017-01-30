@@ -1,23 +1,11 @@
-import { TestBed, async, inject,fakeAsync,tick } from '@angular/core/testing';
-
-import { BrowserModule } 		from '@angular/platform-browser';
-import { FormsModule } 			from '@angular/forms';
+import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 
 import { HttpModule } 			from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from '../in-memory-data.service';
 
-import { AppComponent } 		from '../app.component';
-import { HeroDetailComponent } 	from '../hero-detail/hero-detail.component';
-import { HeroesComponent } 		from '../heroes/heroes.component';
-import { DashboardComponent } 	from '../dashboard/dashboard.component';
-import { HeroSearchService } 	from '../services/hero-search.service';
-
-import { AppRoutingModule }     from '../app-routing.module';
-import { HeroSearchComponent } 	from '../hero-search/hero-search.component';
+import { HeroSearchService }	from './hero-search.service';
 import { Hero } 				from '../hero';
-
-import { APP_BASE_HREF } from '@angular/common'; 
 
 import { Observable } 				from 'rxjs';
 import '../rxjs-extensions';
@@ -35,23 +23,13 @@ describe('App: AngularTourOfHeroes', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				AppComponent,
-				HeroDetailComponent,
-				HeroesComponent,
-				DashboardComponent,
-				HeroSearchComponent
-			],
+			declarations: [],
 			imports: [
-				BrowserModule,
-				FormsModule,
 				HttpModule,
-				InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 }),
-				AppRoutingModule
+				InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 })
 			],
 			providers: [
-				{ provide: HeroSearchService, useClass: HeroSearchService },
-				{ provide: APP_BASE_HREF, useValue: '/' }
+				{ provide: HeroSearchService, useClass: HeroSearchService }
 			],
 		});
 	});

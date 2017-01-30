@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { TestBed, async, inject,fakeAsync,tick } from '@angular/core/testing';
+import { TestBed, inject,fakeAsync,tick } from '@angular/core/testing';
 
 import { BrowserModule } 		from '@angular/platform-browser';
 import { FormsModule } 			from '@angular/forms';
@@ -21,9 +21,7 @@ import { APP_BASE_HREF } from '@angular/common';
 
 import '../rxjs-extensions';
 
-describe('App: AngularTourOfHeroes', () => {
-
-	  let fixture;
+describe('DashboardComponent tests', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -75,5 +73,5 @@ describe('App: AngularTourOfHeroes', () => {
 			})
 		)
 	);
-	
-  });
+
+});
